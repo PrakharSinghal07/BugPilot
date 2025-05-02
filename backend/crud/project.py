@@ -1,6 +1,6 @@
 from sqlalchemy.orm import Session
-from backend.models import project as models
-from backend.schemas import project as schemas
+from ..models import project as models
+from ..schemas import project as schemas
 
 def create_project(db: Session, project: schemas.ProjectCreate, user_id: int):
   db_project = models.Project(**project.model_dump(), owner_id = user_id)

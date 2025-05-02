@@ -1,8 +1,8 @@
 from sqlalchemy import Column, Integer, String, ForeignKey
 from sqlalchemy.orm import relationship
-from backend.database import Base
-from backend.models.user import User
-from backend.models.bug import Bug
+from ..database import Base
+from ..models.user import User
+from ..models.bug import Bug
 class Project(Base):
   __tablename__ = "projects"
   id = Column(Integer, primary_key=True, index=True)
