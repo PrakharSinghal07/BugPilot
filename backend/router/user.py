@@ -5,15 +5,8 @@ from backend.schemas import user as schemas
 from backend.crud import user as crud
 from backend.database import SessionLocal
 from backend.utils import create_access_token
-
+from backend.dependencies import get_db
 router = APIRouter(prefix="/users", tags=["Users"])
-
-def get_db():
-    db = SessionLocal()
-    try:
-        yield db
-    finally:
-        db.close()
 
 @router.post("/register", response_model=schemas.User)
 def register_user(user: schemas.UserCreate, db: Session = Depends(get_db)):

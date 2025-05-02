@@ -3,18 +3,11 @@ from sqlalchemy.orm import Session
 from backend.schemas import project as schemas
 from backend.crud import project as crud
 from backend.database import SessionLocal
-from backend.dependencies import get_current_user
+from backend.dependencies import get_current_user, get_db
 from backend.models.user import User
 
 router = APIRouter(prefix='/projects', tags=["Projects"])
 
-
-def get_db():
-    db = SessionLocal()
-    try:
-        yield db
-    finally:
-        db.close()
 
 
 @router.post('/', response_model=schemas.Project)

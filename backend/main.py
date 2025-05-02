@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from backend.router import project, user
+from backend.router import project, user, bug
 from backend.database import SessionLocal, engine, Base
 app = FastAPI()
 
@@ -19,3 +19,4 @@ def ping():
 
 app.include_router(project.router)
 app.include_router(user.router)
+app.include_router(bug.router)
