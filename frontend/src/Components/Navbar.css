@@ -1,0 +1,145 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+.navbar {
+  position: fixed;
+  top: 16px;
+  margin-left: 192px;
+  margin-right: 24px;
+  width: calc(100% - 209px); 
+  z-index: 1000; 
+  border-radius: 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  color: #fff;
+   background: rgba(22, 102, 230, 0.7); 
+}
+
+
+.navbar__left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.navbar__left img {
+  height: 25.6px;
+  width: 25.6px;
+  object-fit: contain;
+}
+
+.navbar__left h1 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #f8fafc; 
+}
+
+
+.navbar__right {
+  display: flex;
+  align-items: center;
+  gap: 19.2px;
+}
+
+.navbar__right a,
+.dropdown > button {
+  color: #f1f5f9;
+  background: none;
+  border: none;
+  font-size: 0.76rem;
+  text-decoration: none;
+  cursor: pointer;
+  position: relative;
+  padding: 0.2rem 0.4rem;
+  transition: color 0.2s;
+}
+
+.navbar__right a:hover,
+.dropdown > button:hover {
+  color: #93c5fd; 
+}
+
+
+.dropdown {
+  position: relative;
+}
+
+.dropdown-content {
+
+  position: absolute;
+  top: 120%;
+  right: 0;
+  background: #f8fafc;
+  color: #1e293b;
+  border-radius: 6px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  min-width: 112px;
+  overflow: hidden;
+  z-index: 1000;
+}
+
+.dropdown-content button {
+  background: none;
+  border: none;
+  padding: 0.6rem 0.8rem;
+  width: 100%;
+  text-align: left;
+  font-size: 0.72rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.dropdown-content button:hover {
+  background-color: #e2e8f0;
+}
+
+
+
+.navbar__toggle {
+  display: none;
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+}
+
+
+@media (max-width: 768px) {
+  .navbar__right {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: #1e293b;
+    flex-direction: column;
+    padding: 1rem;
+    width: 100%;
+    gap: 1rem;
+  }
+
+  .navbar__right.open {
+    display: flex;
+  }
+
+  .navbar__toggle {
+    display: block;
+  }
+
+  .dropdown-content {
+    position: static;
+    box-shadow: none;
+    background: #334155;
+    color: #fff;
+  }
+
+  .dropdown-content button:hover {
+    background: #475569;
+  }
+}

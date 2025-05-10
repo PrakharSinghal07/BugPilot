@@ -1,22 +1,35 @@
-import { useEffect, useState } from "react";
-
-function App() {
-  const [ping, setPing] = useState("")
-  useEffect(() => {
-    const callBackend = async () => {
-      const response = await fetch('http://127.0.0.1:8000/ping')
-      const result = await response.json()
-      setPing(result.message)
-    }
-    callBackend()
-  }, [])
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import Register from "./Pages/Register";
+import Login from "./Pages/Login";
+import Dashboard from "./Pages/Dashboard";
+import PrivateRoute from "./Components/PrivateRoute";
+import {AuthProvider} from "./Context/AuthContext";
+import Projects from "./Pages/Projects";
+export default function App() {
   return (
-    <div>
-      <h1>Mini Jira Bug Tracker</h1>
-      <p>Frontend is working!</p>
-      <p>Backend says {ping}!</p>
-    </div>
+    <AuthProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/register" element={<Register />} />
+          <Route path="/login" element={<Login />} />
+          <Route
+            path="/dashboard"
+            element={
+              <PrivateRoute>
+                <Dashboard />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/projects"
+            element={
+              <PrivateRoute>
+                <Projects />
+              </PrivateRoute>
+            }
+          />
+        </Routes>
+      </BrowserRouter>
+    </AuthProvider>
   );
 }
-
-export default App;
